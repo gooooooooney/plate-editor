@@ -155,6 +155,8 @@ import { TodoListElement } from '@/components/plate-ui/todo-list-element';
 import { withDraggables } from '@/components/plate-ui/with-draggables';
 import { TabbableElement } from '@/components/tabbable-element';
 
+import { createSlashPlugin } from './plugins/slash/createSlashPlugin';
+
 const resetBlockTypesCommonRule = {
   types: [ELEMENT_BLOCKQUOTE, ELEMENT_TODO_LI],
   defaultType: ELEMENT_PARAGRAPH,
@@ -366,6 +368,7 @@ export const plugins = createPlugins(
       options: { type: ELEMENT_PARAGRAPH },
     }),
     dragOverCursorPlugin,
+    createSlashPlugin(),
 
     // Collaboration
     createCommentsPlugin(),

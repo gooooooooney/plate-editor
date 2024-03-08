@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { cn } from '@udecode/cn';
 import { CommentsProvider } from '@udecode/plate-comments';
 import { Plate } from '@udecode/plate-common';
@@ -11,6 +11,8 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 import { commentsUsers, myUserId } from '@/lib/plate/comments';
 import { MENTIONABLES } from '@/lib/plate/mentionables';
 import { plugins } from '@/lib/plate/plate-plugins';
+import { SLASH_ITEMS } from '@/lib/plate/slash-items';
+import { slashSelectors } from '@/lib/plate/store';
 import { CommentsPopover } from '@/components/plate-ui/comments-popover';
 import { CursorOverlay } from '@/components/plate-ui/cursor-overlay';
 import { Editor } from '@/components/plate-ui/editor';
@@ -19,6 +21,8 @@ import { FixedToolbarButtons } from '@/components/plate-ui/fixed-toolbar-buttons
 import { FloatingToolbar } from '@/components/plate-ui/floating-toolbar';
 import { FloatingToolbarButtons } from '@/components/plate-ui/floating-toolbar-buttons';
 import { MentionCombobox } from '@/components/plate-ui/mention-combobox';
+
+import { SlashCombobox } from './plate-ui/slash-combobox';
 
 export default function PlateEditor() {
   const containerRef = useRef(null);
@@ -30,6 +34,10 @@ export default function PlateEditor() {
       children: [{ text: 'Hello, World!' }],
     },
   ];
+  const shouldShowSlashMenu = slashSelectors.shouldShowSlashMenu();
+  useEffect(() => {
+    console.log(shouldShowSlashMenu);
+  }, [shouldShowSlashMenu]);
 
   return (
     <DndProvider backend={HTML5Backend}>
@@ -61,7 +69,10 @@ export default function PlateEditor() {
             <MentionCombobox items={MENTIONABLES} />
 
             <CommentsPopover />
-
+            {/* {shouldShowSlashMenu && (
+              <div className="fixed left-0 top-0 z-10 size-full bg-gray-900 bg-opacity-50"></div>
+            )} */}
+            <SlashCombobox items={SLASH_ITEMS} />
             <CursorOverlay containerRef={containerRef} />
           </div>
         </Plate>

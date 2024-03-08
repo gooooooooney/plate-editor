@@ -93,7 +93,7 @@ export function ComboboxContent(props: ComboboxContentProps) {
   );
 }
 
-export function Combobox({
+export function Combobox<Data>({
   id,
   trigger,
   searchPattern,
@@ -104,7 +104,7 @@ export function Combobox({
   sort,
   disabled: _disabled,
   ...props
-}: ComboboxProps) {
+}: ComboboxProps<Data>) {
   const storeItems = useComboboxSelectors.items();
   const disabled =
     _disabled ?? (storeItems.length === 0 && !props.items?.length);
@@ -139,7 +139,6 @@ export function Combobox({
     filter,
     sort,
   ]);
-
   if (
     !combobox ||
     !selectionDefined ||

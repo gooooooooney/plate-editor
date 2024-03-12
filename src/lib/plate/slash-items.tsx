@@ -150,15 +150,15 @@ export const SLASH_ITEMS: TComboboxItem<TSlashData>[] = [
     key: 'Table',
     text: 'Table',
   },
-  {
-    data: {
-      title: 'Emoji',
-      description: 'Pick an emoji.',
-      searchTerms: ['photo', 'picture', 'media'],
-      icon: <ImageIcon size={18} />,
-      value: 'emoji',
-    },
-    key: 'Emoji',
-    text: 'Emoji',
-  },
+  // {
+  //   data: {
+  //     title: 'Emoji',
+  //     description: 'Pick an emoji.',
+  //     searchTerms: ['photo', 'picture', 'media'],
+  //     icon: <ImageIcon size={18} />,
+  //     value: 'emoji',
+  //   },
+  //   key: 'Emoji',
+  //   text: 'Emoji',
+  // },
 ];

@@ -1,20 +1,25 @@
 import { createZustandStore } from '@udecode/plate-common';
 
 export type SlashState = {
-  shouldShowSlashMenu: boolean;
+  shouldShowSlashEmoji: boolean;
 };
 
 export const slashStore = createZustandStore('slash')<SlashState>({
-  shouldShowSlashMenu: false,
+  shouldShowSlashEmoji: false,
 }).extendActions((set, get) => ({
+  setSlashMenu: (bol:boolean) => {
+    set.state((draft) => {
+      draft.shouldShowSlashEmoji = bol;
+    });
+  },
   openSlashMenu: () => {
     set.state((draft) => {
-      draft.shouldShowSlashMenu = true;
+      draft.shouldShowSlashEmoji = true;
     });
   },
   closeSlashMenu: () => {
     set.state((draft) => {
-      draft.shouldShowSlashMenu = false;
+      draft.shouldShowSlashEmoji = false;
     });
   },
 }));

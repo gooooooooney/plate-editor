@@ -12,7 +12,6 @@ import { commentsUsers, myUserId } from '@/lib/plate/comments';
 import { MENTIONABLES } from '@/lib/plate/mentionables';
 import { plugins } from '@/lib/plate/plate-plugins';
 import { SLASH_ITEMS } from '@/lib/plate/slash-items';
-import { slashSelectors } from '@/lib/plate/store';
 import { CommentsPopover } from '@/components/plate-ui/comments-popover';
 import { CursorOverlay } from '@/components/plate-ui/cursor-overlay';
 import { Editor } from '@/components/plate-ui/editor';
@@ -34,10 +33,6 @@ export default function PlateEditor() {
       children: [{ text: 'Hello, World!' }],
     },
   ];
-  const shouldShowSlashMenu = slashSelectors.shouldShowSlashMenu();
-  useEffect(() => {
-    console.log(shouldShowSlashMenu);
-  }, [shouldShowSlashMenu]);
 
   return (
     <DndProvider backend={HTML5Backend}>

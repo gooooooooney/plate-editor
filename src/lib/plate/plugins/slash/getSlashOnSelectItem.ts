@@ -26,6 +26,7 @@ import { TSlashData } from '../../slash-items';
 import { KEY_SLASH } from './createSlashPlugin';
 import { isNodeSlashInput } from './queries/isNodeSlashInput';
 import { SlashPlugin, TSlashElement } from './types';
+import { slashAction } from '../../store';
 
 export interface CreateSlashNode<TData extends Data> {
   (
@@ -85,6 +86,8 @@ export const getSlashOnSelectItem =
       switch (item.data.value) {
         case 'emoji':
           comboboxActions.reset();
+          slashAction.setSlashMenu(true)
+
           break;
         case ListStyleType.Decimal:
         case ListStyleType.Disc:

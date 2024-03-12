@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import * as Popover from '@radix-ui/react-popover';
 import { cn, withRef } from '@udecode/cn';
 import {
@@ -31,7 +31,7 @@ export const ComboboxItem = withRef<'div', ComboboxContentItemProps>(
       <div
         ref={ref}
         className={cn(
-          'relative flex h-9 cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors',
+          'relative flex  cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors',
           'hover:bg-accent hover:text-accent-foreground data-[highlighted=true]:bg-accent data-[highlighted=true]:text-accent-foreground',
           className
         )}
@@ -72,7 +72,7 @@ export function ComboboxContent(props: ComboboxContentProps) {
           side="bottom"
           align="start"
           className={cn(
-            'z-[500] m-0 max-h-[288px] w-[300px] overflow-scroll rounded-md bg-popover p-0 shadow-md'
+            'z-[500] m-0 max-h-[288px] w-[300px] overflow-y-scroll rounded-md bg-popover p-0 shadow-md'
           )}
           onOpenAutoFocus={(event) => event.preventDefault()}
         >
@@ -87,6 +87,9 @@ export function ComboboxContent(props: ComboboxContentProps) {
               onRenderItem={onRenderItem}
             />
           ))}
+          {filteredItems.length === 0 && (
+            <div className="p-2 text-muted-foreground">No results found</div>
+          )}
         </Popover.Content>
       </Popover.Portal>
     </Popover.Root>

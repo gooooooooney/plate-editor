@@ -4,7 +4,7 @@ import * as Popover from '@radix-ui/react-popover';
 type EmojiToolbarDropdownProps = {
   control: ReactNode;
   isOpen: boolean;
-  setIsOpen: (open: boolean) => void;
+  setIsOpen?: (open: boolean) => void;
   children: ReactNode;
 };
 

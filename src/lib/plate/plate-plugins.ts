@@ -145,6 +145,7 @@ import { MentionElement } from '@/components/plate-ui/mention-element';
 import { MentionInputElement } from '@/components/plate-ui/mention-input-element';
 import { ParagraphElement } from '@/components/plate-ui/paragraph-element';
 import { withPlaceholders } from '@/components/plate-ui/placeholder';
+import { SlashInputElement } from '@/components/plate-ui/slash-input-element';
 import {
   TableCellElement,
   TableCellHeaderElement,
@@ -155,7 +156,10 @@ import { TodoListElement } from '@/components/plate-ui/todo-list-element';
 import { withDraggables } from '@/components/plate-ui/with-draggables';
 import { TabbableElement } from '@/components/tabbable-element';
 
-import { createSlashPlugin } from './plugins/slash/createSlashPlugin';
+import {
+  createSlashPlugin,
+  ELEMENT_SLASH_INPUT,
+} from './plugins/slash/createSlashPlugin';
 
 const resetBlockTypesCommonRule = {
   types: [ELEMENT_BLOCKQUOTE, ELEMENT_TODO_LI],
@@ -398,6 +402,7 @@ export const plugins = createPlugins(
         [ELEMENT_MEDIA_EMBED]: MediaEmbedElement,
         [ELEMENT_MENTION]: MentionElement,
         [ELEMENT_MENTION_INPUT]: MentionInputElement,
+        [ELEMENT_SLASH_INPUT]: SlashInputElement,
         [ELEMENT_UL]: withProps(ListElement, { variant: 'ul' }),
         [ELEMENT_OL]: withProps(ListElement, { variant: 'ol' }),
         [ELEMENT_PARAGRAPH]: ParagraphElement,

@@ -1,4 +1,12 @@
+import { ELEMENT_BLOCKQUOTE } from '@udecode/plate-block-quote';
+import { ELEMENT_CODE_BLOCK } from '@udecode/plate-code-block';
 import { TComboboxItem } from '@udecode/plate-combobox';
+import { ELEMENT_H1, ELEMENT_H2, ELEMENT_H3 } from '@udecode/plate-heading';
+import { ListStyleType } from '@udecode/plate-indent-list';
+import { ELEMENT_TODO_LI } from '@udecode/plate-list';
+import { ELEMENT_IMAGE } from '@udecode/plate-media';
+import { ELEMENT_PARAGRAPH } from '@udecode/plate-paragraph';
+import { ELEMENT_TABLE } from '@udecode/plate-table';
 import {
   CheckSquare,
   Code,
@@ -12,20 +20,22 @@ import {
   TextQuote,
 } from 'lucide-react';
 
-export type TData = {
+export type TSlashData = {
   title: string;
   description: string;
   searchTerms?: string[];
   icon: JSX.Element;
+  value: string;
 };
 
-export const SLASH_ITEMS: TComboboxItem<TData>[] = [
+export const SLASH_ITEMS: TComboboxItem<TSlashData>[] = [
   {
     data: {
       title: 'Text',
       description: 'Just start typing with plain text.',
       searchTerms: ['p', 'paragraph'],
       icon: <Text size={18} />,
+      value: ELEMENT_PARAGRAPH,
     },
     key: 'text',
     text: 'Text',
@@ -36,6 +46,7 @@ export const SLASH_ITEMS: TComboboxItem<TData>[] = [
       description: 'Track tasks with a to-do list.',
       searchTerms: ['todo', 'task', 'list', 'check', 'checkbox'],
       icon: <CheckSquare size={18} />,
+      value: ELEMENT_TODO_LI,
     },
     key: 'To-do List',
     text: 'To-do List',
@@ -46,6 +57,7 @@ export const SLASH_ITEMS: TComboboxItem<TData>[] = [
       description: 'Big section heading.',
       searchTerms: ['title', 'big', 'large'],
       icon: <Heading1 size={18} />,
+      value: ELEMENT_H1,
     },
     key: 'Heading 1',
     text: 'Heading 1',
@@ -56,6 +68,7 @@ export const SLASH_ITEMS: TComboboxItem<TData>[] = [
       description: 'Medium section heading.',
       searchTerms: ['subtitle', 'medium'],
       icon: <Heading2 size={18} />,
+      value: ELEMENT_H2,
     },
     key: 'Heading 2',
     text: 'Heading 2',
@@ -66,6 +79,7 @@ export const SLASH_ITEMS: TComboboxItem<TData>[] = [
       description: 'Small section heading.',
       searchTerms: ['subtitle', 'small'],
       icon: <Heading3 size={18} />,
+      value: ELEMENT_H3,
     },
     key: 'Heading 3',
     text: 'Heading 3',
@@ -76,6 +90,7 @@ export const SLASH_ITEMS: TComboboxItem<TData>[] = [
       description: 'Create a simple bullet list.',
       searchTerms: ['unordered', 'point'],
       icon: <List size={18} />,
+      value: ListStyleType.Disc,
     },
     key: 'Bullet List',
     text: 'Bullet List',
@@ -86,6 +101,7 @@ export const SLASH_ITEMS: TComboboxItem<TData>[] = [
       description: 'Create a list with numbering.',
       searchTerms: ['ordered'],
       icon: <ListOrdered size={18} />,
+      value: ListStyleType.Decimal,
     },
     key: 'Numbered List',
     text: 'Numbered List',
@@ -96,6 +112,7 @@ export const SLASH_ITEMS: TComboboxItem<TData>[] = [
       description: 'Capture a quote.',
       searchTerms: ['blockquote'],
       icon: <TextQuote size={18} />,
+      value: ELEMENT_BLOCKQUOTE,
     },
     key: 'Quote',
     text: 'Quote',
@@ -106,6 +123,7 @@ export const SLASH_ITEMS: TComboboxItem<TData>[] = [
       description: 'Capture a code snippet.',
       searchTerms: ['codeblock'],
       icon: <Code size={18} />,
+      value: ELEMENT_CODE_BLOCK,
     },
     key: 'Code',
     text: 'Code',
@@ -116,8 +134,31 @@ export const SLASH_ITEMS: TComboboxItem<TData>[] = [
       description: 'Upload an image from your computer.',
       searchTerms: ['photo', 'picture', 'media'],
       icon: <ImageIcon size={18} />,
+      value: ELEMENT_IMAGE,
     },
     key: 'Image',
     text: 'Image',
+  },
+  {
+    data: {
+      title: 'Table',
+      description: 'Insert a table.',
+      searchTerms: ['photo', 'picture', 'media'],
+      icon: <ImageIcon size={18} />,
+      value: ELEMENT_TABLE,
+    },
+    key: 'Table',
+    text: 'Table',
+  },
+  {
+    data: {
+      title: 'Emoji',
+      description: 'Pick an emoji.',
+      searchTerms: ['photo', 'picture', 'media'],
+      icon: <ImageIcon size={18} />,
+      value: 'emoji',
+    },
+    key: 'Emoji',
+    text: 'Emoji',
   },
 ];
